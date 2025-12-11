@@ -1,0 +1,28 @@
+@echo off
+setlocal enabledelayedexpansion
+
+REM List of DNS server IPs
+set "dns1=8.8.8.8"
+set "dns2=8.8.4.4"
+set "dns3=1.1.1.1"
+set "dns4=1.0.0.1"
+set "dns5=9.9.9.9"
+set "dns6=208.67.222.222"
+set "dns7=208.67.220.220"
+set "dns8=8.26.56.26"
+set "dns9=8.20.247.20"
+set "dns10=4.2.2.1"
+
+REM Loop through each DNS and ping
+for /L %%i in (1,1,10) do (
+    set "server=!dns%%i!"
+    echo.
+    echo ==========================================
+    echo Pinging !server! with 32 bytes of data:
+    echo ------------------------------------------
+    ping !server! -n 4
+)
+
+echo.
+echo All done!
+pause
